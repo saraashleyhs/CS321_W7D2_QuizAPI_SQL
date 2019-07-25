@@ -8,17 +8,22 @@ namespace QuizApp.Infrastructure.Data
 {
     public class AppDbContext : IdentityDbContext<User>
     {
+        public AppDbContext(DbContextOptions<AppDbContext> options)
+            : base(options)
+        {
+        }
+
         // NOTE: User DbSet is inherited from IdentityDbContext
         // TODO: add DbSets for Quizzes and Questions
         public DbSet<Quiz> Quizzes { get; set; }
         public DbSet<Question> Questions { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            base.OnConfiguring(optionsBuilder);
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    base.OnConfiguring(optionsBuilder);
 
-            optionsBuilder.UseSqlite("Data Source=./quizapp.db");
-        }
+        //    optionsBuilder.UseSqlite("Data Source=./quizapp.db");
+        //}
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
