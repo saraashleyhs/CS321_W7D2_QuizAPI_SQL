@@ -29,9 +29,6 @@ namespace QuizApp
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //// TODO: register AppDbContext
-            //services.AddDbContext<AppDbContext>();
-
             // Use SQL Database if in Azure, otherwise, use SQLite
             if (Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
                 services.AddDbContext<AppDbContext>(options =>
